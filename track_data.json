@@ -26,10 +26,17 @@
     "sec_listened": 414
   },
   {
-    "last_listen_date": "2019-05-24 22:59:15",
+    "last_listen_date": "2019-05-24 22:59:28",
     "name": "Just Like Fire (From the Original Motion Picture \"Alice Through The Looking Glass\")",
     "album": "Just Like Fire (From the Original Motion Picture \"Alice Through The Looking Glass\")",
     "artist": "P!nk",
-    "sec_listened": 226
+    "sec_listened": 239
+  },
+  {
+    "last_listen_date": "2019-05-24 23:00:00",
+    "name": "Bitter Love",
+    "album": "Bitter Love",
+    "artist": "Pia Mia",
+    "sec_listened": 31
   }
 ]
