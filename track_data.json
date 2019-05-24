@@ -1,0 +1,35 @@
+[
+  {
+    "name": "example_song",
+    "album": "example_album_name",
+    "artist": "example_artist_name"
+  },
+  {
+    "last_listen_date": "2019-05-24 22:40:31",
+    "name": "Hold On",
+    "album": "Hold On",
+    "artist": "Chord Overstreet",
+    "sec_listened": 38
+  },
+  {
+    "last_listen_date": "2019-05-24 22:41:01",
+    "name": ":( (sad face)",
+    "album": ":( (sad face)",
+    "artist": "Bahari",
+    "sec_listened": 6
+  },
+  {
+    "last_listen_date": "2019-05-24 22:53:09",
+    "name": "Sucker Punch",
+    "album": "Sucker Punch",
+    "artist": "Sigrid",
+    "sec_listened": 250
+  },
+  {
+    "last_listen_date": "2019-05-24 22:52:40",
+    "name": "Just Like Fire (From the Original Motion Picture \"Alice Through The Looking Glass\")",
+    "album": "Just Like Fire (From the Original Motion Picture \"Alice Through The Looking Glass\")",
+    "artist": "P!nk",
+    "sec_listened": 25
+  }
+]
