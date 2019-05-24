@@ -9,20 +9,25 @@ def handle_track(name: str, album: str, artist: str, is_playing: bool, prev_trac
         return
 
     tracks = None
-    with open("track_data.json") as track_data_file:
-        tracks = loads(track_data_file.read())
+    file_exists = True
+    try:
+        with open("track_data.json") as track_data_file:
+            tracks = loads(track_data_file.read())
+    except FileNotFoundError:
+        tracks = []
+        file_exists = False
 
     TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-
     now = datetime.now()
     now_str = now.strftime(TIME_FORMAT)
 
     current_track = None
 
     found = False
-    for track in tracks:
-        if track["name"] == name:
-            found = True
+    if file_exists:
+        for track in tracks:
+            if track["name"] == name:
+                found = True
             last_listen_date = datetime.strptime(track["last_listen_date"], TIME_FORMAT)
             listen_sec_diff = (now - last_listen_date).seconds
             track["last_listen_date"] = now_str
