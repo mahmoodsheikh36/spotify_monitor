@@ -5,3 +5,6 @@ for example if you are on Arch you can do:
   sudo pacman -S python-dbus
 
 also you should remove the file track_data.json because that's my listening data, remove it so there won't be conflicts between my listenings and yours
+
+to run this program simply do:
+  ./spotify_tracker.py
