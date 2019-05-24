@@ -26,7 +26,7 @@ def handle_track(name: str, album: str, artist: str, is_playing: bool, prev_trac
             last_listen_date = datetime.strptime(track["last_listen_date"], TIME_FORMAT)
             listen_sec_diff = (now - last_listen_date).seconds
             track["last_listen_date"] = now_str
-            if listen_sec_diff < 30 and (prev_track == None or prev_track["name"] == name):
+            if listen_sec_diff < 45 and (prev_track == None or prev_track["name"] == name):
                 track["sec_listened"] += listen_sec_diff
             current_track = track
     
@@ -39,13 +39,14 @@ def handle_track(name: str, album: str, artist: str, is_playing: bool, prev_trac
         current_track = track
         tracks.append(track)
     
-    with open("track_data.json", "w") as track_data_file:
+    with open("track_data.json", "w+") as track_data_file:
         track_data_file.write(dumps(tracks, indent=2))
 
     return current_track
 
 def main():
     prev_track = None
+
     while True:
         session_bus = SessionBus()
 
