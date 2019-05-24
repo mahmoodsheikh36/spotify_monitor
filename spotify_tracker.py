@@ -51,7 +51,7 @@ def handle_track(name: str, album: str, artist: str, is_playing: bool, prev_trac
 
 def main():
     prev_track = None
-
+    print("starting to monitor your spotify tracks, make sure you started the spotify client before you run this program")
     while True:
         session_bus = SessionBus()
 
