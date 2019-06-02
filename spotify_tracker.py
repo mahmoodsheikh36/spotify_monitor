@@ -85,6 +85,7 @@ def main():
 
             sleep(1)
         except Exception as e:
+            print("exception occurred")
             print(e)
 
 if __name__ == "__main__":
