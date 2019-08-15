@@ -4,6 +4,9 @@ from json import loads, dumps
 from datetime import datetime
 from time import sleep
 from sys import argv
+from threading import Thread
+
+prev_track = None
 
 def handle_track(name: str, album: str, artist: str, is_playing: bool, prev_track):
     if not is_playing:
@@ -31,7 +34,8 @@ def handle_track(name: str, album: str, artist: str, is_playing: bool, prev_trac
     found = False
     if file_exists:
         for track in tracks:
-            if track["name"] == name:
+            if track["name"] == name and track["album"] == album \
+               and track["artist"] == artist:
                 found = True
                 last_listen_date = datetime.strptime(track["last_listen_date"], TIME_FORMAT)
                 listen_sec_diff = (now - last_listen_date).seconds
@@ -52,10 +56,9 @@ def handle_track(name: str, album: str, artist: str, is_playing: bool, prev_trac
     with open(data_file, "w+") as track_data_file:
         track_data_file.write(dumps(tracks, indent=2))
 
-    return current_track
+    prev_track = current_track
 
 def main():
-    prev_track = None
     print("starting to monitor your spotify tracks, make sure you start the spotify client before you run this program")
     while True:
         try:
@@ -81,13 +84,19 @@ def main():
             song_name = str(metadata.get("xesam:title"))
             album = str(metadata.get("xesam:album"))
 
-            prev_track = handle_track(song_name, album, artist, is_playing, prev_track)
+            thread = Thread(target=handle_track, args=(song_name, album, artist, is_playing, prev_track,))
+            thread.start()
+
+            # if is_playing:
+            #     print('{} - {}'.format(song_name, artist))
 
             sleep(1)
         except Exception as e:
             print("exception occurred")
             print(e)
             sleep(1)
+
+    print('exiting? wtf?')
 
 if __name__ == "__main__":
     main()
